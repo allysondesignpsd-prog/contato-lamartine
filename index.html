@@ -73,7 +73,6 @@
     @keyframes wine-flow{0%,100%{background-position:12% 35%,0% 15%,100% 0%,50% 50%}25%{background-position:72% 18%,45% 82%,76% 48%,18% 78%}50%{background-position:40% 82%,100% 42%,22% 100%,88% 24%}75%{background-position:92% 62%,24% 100%,100% 28%,42% 92%}}
     @keyframes ambient-glow{0%{transform:translate3d(-3%,-2%,0) scale(.94);opacity:.45}100%{transform:translate3d(4%,3%,0) scale(1.08);opacity:1}}@keyframes card-border-glow{to{background-position:-100% 0}}
     @media(prefers-reduced-motion:reduce){body,main,main::before,main::after,.card::after,.contact::after{animation:none;background-position:50% 50%}}
-    @media(prefers-reduced-motion:reduce){.hero-video{display:none}}
     @media(prefers-reduced-motion:reduce){.action::before{animation:none}}
     @media(max-width:960px){.hero{grid-template-columns:1fr;min-height:auto}.hero-image{min-height:340px;order:-1}.intro{padding:40px 24px 80px}.logo{width:210px;height:122px;object-position:center 52%;transform:none;margin-bottom:28px}main{padding:0 24px 60px;margin-top:-48px}.grid{grid-template-columns:1fr;gap:18px}.card{min-height:190px;padding:24px}.card>div{max-width:75%}.card h2{font-size:24px}.contact{padding:32px 26px;min-height:220px;margin-top:22px}.contact>div{max-width:70%}.contact h2{font-size:28px}footer{padding:40px 20px 30px}}
     @media(max-width:520px){.hero-image{min-height:0;aspect-ratio:16/9;background-color:var(--bg)}.hero-video{object-fit:cover;background:var(--bg)}.hero-image::before{content:"";display:block;position:absolute;z-index:1;pointer-events:none;inset:auto 0 -1px;height:34%;background:linear-gradient(180deg,rgba(252,251,248,0) 0%,rgba(252,251,248,.45) 48%,var(--bg) 100%)}.intro{padding:28px 18px 70px}.logo{width:180px;height:105px;margin-bottom:22px}.intro h1{font-size:clamp(1.42rem,6.7vw,1.8rem);white-space:nowrap}.intro h1 em{white-space:nowrap}.card h2 .title-line,.contact h2 .title-line{display:block}main{padding:20px 16px 60px;margin-top:0}main>.contact:first-child{top:0;margin-top:0}.card>div{max-width:100%}.card::before{background:linear-gradient(180deg,rgba(20,4,10,.55) 0%,rgba(20,4,10,.92) 55%)}.card{min-height:220px}.tiktok-mark,.youtube-mark{right:12px;top:14px;width:48px;opacity:.64;transform:none}.whatsapp-mark{display:none}.contact{padding:26px 22px;min-height:210px}.contact>div{max-width:100%}.contact::before{background:linear-gradient(180deg,rgba(245,242,236,.6),rgba(245,242,236,.95) 50%)}.action{width:min(100%,280px)}.options{grid-template-columns:1fr}}
@@ -110,7 +109,7 @@
 <body>
   <header class="hero">
     <div class="intro"><img class="logo" src="images/logo.png" alt="Lamartine Imóveis"><h1>Encontre o imóvel certo,<em>para o seu próximo momento</em></h1><p>Comprar, vender ou alugar exige mais do que uma boa oportunidade. Exige estratégia, segurança e conhecimento do mercado. Conheça as oportunidades selecionadas pela Lamartine Imóveis.</p></div>
-    <div class="hero-image" aria-hidden="true"><video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="images/hero.jpg" tabindex="-1"><source src="public/videos/hero-background.webm" type="video/webm"></video></div>
+    <div class="hero-image" aria-hidden="true"><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="images/hero.jpg" tabindex="-1"><source src="public/videos/hero-background.webm?v=2" type="video/webm"></video></div>
   </header>
   <main>
     <section class="contact"><div><h2><span class="title-line">Contato &amp;</span><em class="title-line">WhatsApp</em></h2><p>Informe nome, telefone e se procura comprar ou alugar. Seu atendimento entrará automaticamente na fila da equipe.</p><button class="action" id="openForm" type="button">Quero atendimento</button></div><img class="whatsapp-mark" src="images/whatsapp-mark.png" alt="" aria-hidden="true"></section>
@@ -137,6 +136,11 @@
     </form>
   </div>
   <script>
+    const heroVideo=document.querySelector('.hero-video');
+    const startHeroVideo=()=>{if(heroVideo){heroVideo.muted=true;const playback=heroVideo.play();if(playback)playback.catch(()=>{})}};
+    startHeroVideo();
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden)startHeroVideo()});
+    document.addEventListener('pointerdown',startHeroVideo,{once:true});
     const API_URL='https://jyelahgifsnypjyovshk.supabase.co/functions/v1/bio-lead-intake';
     const phones=['556193672142','556193095756','556192992363','556133441005','556191774445'];
     document.getElementById('evaluationButton').addEventListener('click',()=>{const key='lamartine-evaluation-index';const index=Number(localStorage.getItem(key)||0)%phones.length;localStorage.setItem(key,String(index+1));const text=encodeURIComponent('Olá! Vim pelo link da Lamartine e gostaria de avaliar meu imóvel.');location.href=`https://wa.me/${phones[index]}?text=${text}`});
