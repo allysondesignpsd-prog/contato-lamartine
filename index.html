@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Acesse os imóveis, redes sociais e atendimento da Lamartine Imóveis.">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Lamartine Imóveis</title>
+  <style>
+    @font-face{font-family:'New York Personal';src:url('images/NewYork-Personal-Use.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+    *{box-sizing:border-box}body{margin:0;background:#21050d;color:#fff;font-family:Inter,sans-serif}button,a,input{font:inherit}
+    .hero{min-height:570px;background:#fcfbf8;color:#1c1718;display:grid;grid-template-columns:1fr 1.15fr}
+    .intro{padding:48px max(32px,calc((100vw - 1180px)/2));padding-right:48px;display:flex;flex-direction:column;justify-content:center}
+    .logo{width:190px;height:100px;object-fit:contain;margin-bottom:42px}.hero-image{background:url('images/hero.jpg') center/cover}
+    h1,h2,h3{font-family:'Cormorant Garamond',serif;margin:0}.intro h1{font-size:clamp(36px,4vw,56px);line-height:1}.intro h1 em{color:#5c0611;display:block}.intro p{color:#5e5557;line-height:1.65;max-width:480px}
+    main{background:radial-gradient(circle at 50% 20%,#a50016,#51000b 55%,#21050d);padding:64px 24px}.grid,.contact{max-width:1180px;margin:auto}.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .card{min-height:245px;padding:30px;border:1px solid #b68f62;border-radius:10px;display:flex;align-items:flex-end;color:#fff;text-decoration:none;background-position:center;background-size:cover;position:relative;overflow:hidden;cursor:pointer;text-align:left}
+    .card:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,4,9,.94),rgba(22,4,9,.3))}.card>div{position:relative;max-width:65%}.tag{color:#d6afb8;text-transform:uppercase;letter-spacing:2px;font-size:11px}.card h2{font-size:30px;margin:10px 0}.card p{color:#e0d2d5;font-size:14px;line-height:1.5}
+    .action{display:inline-block;background:#5c0611;border:1px solid #7f2633;color:#fff;border-radius:5px;padding:13px 18px;text-transform:uppercase;letter-spacing:1.4px;font-size:11px;font-weight:600}.soon{opacity:.75}.contact{margin-top:28px;background:#f5f2ec url('images/contact.jpg') right center/cover no-repeat;color:#1c1718;border-radius:10px;padding:46px;min-height:240px;display:flex;align-items:center}.contact>div{max-width:54%}.contact h2{font-size:40px}.contact em{color:#5c0611}.contact p{color:#62595b;line-height:1.5}
+    footer{text-align:center;padding:40px 20px;color:#d5bdc3;font-size:13px}.modal[hidden]{display:none}.modal{position:fixed;z-index:20;inset:0;background:rgba(8,0,2,.78);display:grid;place-items:center;padding:20px}.dialog{width:min(520px,100%);max-height:92vh;overflow:auto;background:#fcfbf8;color:#241b1d;border-radius:12px;padding:28px;box-shadow:0 24px 70px #000;position:relative}.close{position:absolute;right:18px;top:14px;border:0;background:transparent;font-size:30px;cursor:pointer;color:#5c0611}.dialog h2{font-size:34px;color:#5c0611;padding-right:35px}.dialog>p{color:#665c5e;line-height:1.5}.field{display:block;margin-top:18px;font-weight:600;font-size:14px}.field input{display:block;width:100%;margin-top:7px;border:1px solid #cfc5c7;border-radius:7px;padding:14px;background:#fff;color:#231b1c}.options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.option{border:1px solid #cfc5c7;padding:13px;border-radius:7px;display:flex;gap:9px;align-items:center}.submit{width:100%;border:0;margin-top:22px;background:#5c0611;color:#fff;border-radius:7px;padding:15px;font-weight:600;cursor:pointer}.submit:disabled{opacity:.6}.message{min-height:24px;margin-top:12px;font-size:14px}.message.error{color:#a30c21}.message.success{color:#176b3a}.honeypot{position:absolute!important;left:-10000px!important}
+    @media(max-width:800px){.hero{grid-template-columns:1fr}.hero-image{min-height:310px;order:-1}.intro{padding:36px 24px 52px}.logo{margin-bottom:25px}.grid{grid-template-columns:1fr}.card{min-height:225px}.card>div,.contact>div{max-width:85%}.contact{padding:30px;background-position:center}.contact h2{font-size:34px}}
+    @media(max-width:480px){main{padding:35px 16px}.card{padding:22px}.card>div,.contact>div{max-width:100%}.options{grid-template-columns:1fr}.dialog{padding:24px 18px}}
+    /* Visual institucional; integrações e destinos permanecem intactos. */
+    *,*::before,*::after{box-sizing:border-box}
+    :root{--bg:#fcfbf8;--red:#5a1220;--red-deep:#3d0a15;--white:#f5f2ec}
+    html{background:#21050d;overflow-x:hidden;scroll-behavior:smooth}
+    body{width:100%;min-height:100vh;overflow-x:hidden;background:radial-gradient(ellipse 54% 26% at 50% 45%,#3f0002 0%,rgba(63,0,2,.88) 24%,rgba(36,2,6,.35) 58%,transparent 76%),radial-gradient(ellipse 52% 30% at 9% 9%,rgba(63,0,2,.78),transparent 68%),radial-gradient(ellipse 56% 32% at 88% 19%,rgba(36,2,6,.72),transparent 70%),linear-gradient(142deg,#240206 0%,#3f0002 30%,#240206 55%,#3f0002 78%,#240206 100%);background-size:175% 175%,160% 160%,170% 170%,140% 140%;animation:wine-flow 22s ease-in-out infinite;color:#1a1a1a;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+    .hero{background:var(--bg);position:relative;overflow:hidden;min-height:640px;width:100%;max-width:none;margin:0;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+    .intro{padding:44px 60px 105px max(60px,calc((100vw - 1180px)/2));justify-content:flex-start}
+    .logo{width:210px;height:122px;object-fit:cover;object-position:center 52%;margin:0 0 26px;transform:none}
+    .intro h1{font-family:'New York Personal','Cormorant Garamond',serif;font-size:clamp(1.8rem,2.15vw,2.3rem);line-height:1.1;color:#1a1a1a;font-weight:500;letter-spacing:-.5px;white-space:nowrap}
+    .intro h1 em{font-style:italic;color:var(--red);display:block;margin-top:6px;white-space:nowrap}
+    .intro p{margin-top:22px;color:#555;font-size:15px;line-height:1.65;max-width:380px}
+    .hero-image{position:relative;overflow:hidden;border:0;outline:0;background:#080204 url('images/hero.jpg') center/contain no-repeat}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;border:0;outline:0;background:var(--bg);z-index:0}
+    .hero-image::before{content:"";display:block;position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--bg) 0%,rgba(252,251,248,.72) 8%,rgba(252,251,248,.24) 18%,transparent 30%)}
+    main{isolation:isolate;overflow:clip;overflow-clip-margin:50px;background:radial-gradient(ellipse 54% 26% at 50% 45%,#3f0002 0%,rgba(63,0,2,.88) 24%,rgba(36,2,6,.35) 58%,transparent 76%),radial-gradient(ellipse 52% 30% at 9% 9%,rgba(63,0,2,.78),transparent 68%),radial-gradient(ellipse 56% 32% at 88% 19%,rgba(36,2,6,.72),transparent 70%),linear-gradient(142deg,#240206 0%,#3f0002 30%,#240206 55%,#3f0002 78%,#240206 100%);background-size:175% 175%,160% 160%,170% 170%,140% 140%;animation:wine-flow 22s ease-in-out infinite;padding:0 clamp(24px,3.2vw,60px) 80px;margin-top:-90px;position:relative;z-index:2}
+    main::before{content:"";position:absolute;inset:-18%;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 18% 24%,rgba(249,15,15,.24),transparent 24%),radial-gradient(ellipse at 81% 65%,rgba(19,0,1,.4),transparent 29%),radial-gradient(ellipse at 48% 82%,rgba(239,0,0,.18),transparent 25%);filter:blur(26px);animation:ambient-glow 17s ease-in-out infinite alternate}
+    main::after{content:"";position:absolute;z-index:0;pointer-events:none;inset:-15%;background:radial-gradient(ellipse at 66% 28%,rgba(255,47,32,.14),transparent 20%),radial-gradient(ellipse at 28% 73%,rgba(0,0,0,.26),transparent 27%);filter:blur(32px);animation:ambient-glow 21s ease-in-out infinite alternate-reverse}
+    main::before,main::after{display:none;animation:none}
+    main>*{position:relative;z-index:1}
+    .grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+    .card{position:relative;border:1px solid rgba(241,220,183,.3);border-radius:8px;overflow:hidden;min-height:210px;display:flex;align-items:flex-end;padding:30px;color:#fff;background-size:cover;background-position:center;will-change:transform;transition:transform .28s cubic-bezier(.22,.61,.36,1),box-shadow .28s ease;text-align:left}
+    button.card{width:100%;appearance:none;font:inherit}
+    .card::before{background:linear-gradient(90deg,rgba(20,4,10,.92) 0%,rgba(20,4,10,.7) 45%,rgba(20,4,10,.2) 100%)}
+    .card::after,.contact::after{content:"";position:absolute;inset:0;padding:1px;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,transparent 38%,rgba(211,169,91,.18) 45%,#fff2cf 49%,#d9a64e 51%,rgba(255,242,207,.45) 54%,transparent 62%);background-size:300% 100%;background-position:200% 0;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:card-border-glow 4.8s linear infinite;z-index:2}
+    .card>div{position:relative;z-index:1;max-width:58%}
+    .tag{display:block;font-size:10.5px;letter-spacing:2.5px;color:#c9a3ac;text-transform:uppercase;margin-bottom:12px;font-weight:500}
+    .card h2{font-family:'New York Personal','Cormorant Garamond',serif;font-size:28px;font-weight:500;line-height:1.15;margin:0 0 10px}.card h2 .title-line{display:block}.card p{font-size:13.5px;color:#d9c9cd;line-height:1.55;margin:0 0 22px}
+    .tiktok-mark,.whatsapp-mark,.youtube-mark{position:absolute;z-index:1;right:7%;top:50%;height:auto;transform:translateY(-50%);pointer-events:none;filter:drop-shadow(0 12px 18px rgba(0,0,0,.44));transition:transform .55s cubic-bezier(.16,1,.3,1),filter .55s ease}
+    .tiktok-mark{width:clamp(65px,10.5vw,105px)}
+    .whatsapp-mark{right:9%;width:clamp(115px,13vw,170px)}
+    .youtube-mark{right:8%;width:clamp(105px,12vw,155px)}
+    @media(hover:hover) and (pointer:fine){.card:hover .tiktok-mark,.card:hover .youtube-mark,.contact:hover .whatsapp-mark{transform:translate3d(-8px,-54%,0) rotate(-2deg) scale(1.045);filter:drop-shadow(0 17px 23px rgba(0,0,0,.5)) drop-shadow(0 0 7px rgba(178,31,54,.3))}}
+    .action{display:inline-flex;align-items:center;gap:10px;background:var(--red-deep);color:#fff;padding:14px 22px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;border-radius:3px;transition:background .2s;border:1px solid rgba(255,255,255,.08)}.action:hover{background:#4a0e19}.soon{opacity:1}
+    .action{position:relative;justify-content:space-between;width:min(100%,270px);min-height:54px;padding:15px 23px;overflow:hidden;color:#fff;background:linear-gradient(112deg,#030303 0%,#111 19%,#292a2c 36%,#080808 52%,#3d3e40 68%,#121212 82%,#020202 100%);background-size:180% 100%;border:1px solid rgba(205,207,211,.68);border-radius:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.34),inset 0 -1px 0 rgba(124,125,129,.28),inset 14px 0 30px rgba(255,255,255,.025),0 6px 18px rgba(0,0,0,.38),0 0 8px rgba(211,214,220,.14);text-shadow:0 1px 1px #000;transition:transform .3s ease,background-position .55s ease,box-shadow .3s ease;isolation:isolate}
+    .action::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:.75px;background:linear-gradient(90deg,#696b70 0%,#c7c9ce 12%,#fff 23%,#85878c 37%,#dfe1e5 51%,#fff 62%,#8f9196 76%,#d5d7dc 89%,#696b70 100%);background-size:240% 100%;animation:button-border-shine 3.2s linear infinite;pointer-events:none;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;filter:drop-shadow(0 0 2px rgba(225,228,234,.42));z-index:2}
+    .action::after{content:"";position:relative;z-index:1;flex:0 0 12px;width:12px;height:15px;margin-left:18px;background:#fff;clip-path:polygon(0 0,18% 0,100% 43%,100% 57%,18% 100%,0 100%);filter:drop-shadow(0 0 3px rgba(255,255,255,.42));transition:transform .3s ease,filter .3s ease}
+    .action:hover{transform:translateY(-2px);background-position:100% 0;box-shadow:inset 0 1px 0 rgba(255,255,255,.48),inset 0 -1px 0 rgba(168,169,173,.34),0 10px 28px rgba(0,0,0,.48),0 0 13px rgba(218,221,227,.28)}
+    .action:hover::after{transform:translateX(5px) scale(1.06);filter:drop-shadow(0 0 6px rgba(255,255,255,.72))}
+    @keyframes button-border-shine{0%{background-position:0 0}100%{background-position:240% 0}}
+    .contact{position:relative;max-width:1180px;margin:36px auto 0;background:url('images/contact.jpg') right center/cover no-repeat,var(--white);border:1px solid rgba(241,220,183,.42);border-radius:8px;overflow:hidden;min-height:240px;display:flex;align-items:center;padding:40px 46px;color:#1a1a1a;will-change:transform;transition:transform .28s cubic-bezier(.22,.61,.36,1),box-shadow .28s ease}
+    main>.contact:first-child{margin-top:0;margin-bottom:-4px;top:-30px;z-index:3}
+    .contact::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--white) 0%,rgba(245,242,236,.9) 40%,transparent 70%)}.contact>div{position:relative;z-index:1;max-width:52%}
+    .contact h2{font-family:'New York Personal','Cormorant Garamond',serif;font-size:36px;font-weight:500;line-height:1.05}.contact h2 .title-line{display:block}.contact h2 em{font-style:italic;color:var(--red)}.contact p{margin-top:14px;font-size:14px;color:#555;line-height:1.55}.contact .action{margin-top:26px}
+    footer{padding:60px 40px 40px;color:#d9c9cd;text-align:center;background:transparent;font-size:12.5px;letter-spacing:.3px}
+    .modal{z-index:20}.dialog{border:1px solid rgba(241,220,183,.5);border-radius:8px;box-shadow:0 24px 70px rgba(0,0,0,.65)}.submit{background:var(--red-deep);border-radius:3px;letter-spacing:1px;text-transform:uppercase}.field input,.option{border-radius:3px}
+    @media (hover:hover) and (pointer:fine){.card.is-hovered,.contact.is-hovered{transform:scale(1.025);box-shadow:0 18px 34px rgba(13,0,4,.32)}.card:focus-visible,.contact:focus-visible{transform:scale(1.025);box-shadow:0 18px 34px rgba(13,0,4,.32);outline:1px solid #fff2cf;outline-offset:3px}}
+    @keyframes wine-flow{0%,100%{background-position:12% 35%,0% 15%,100% 0%,50% 50%}25%{background-position:72% 18%,45% 82%,76% 48%,18% 78%}50%{background-position:40% 82%,100% 42%,22% 100%,88% 24%}75%{background-position:92% 62%,24% 100%,100% 28%,42% 92%}}
+    @keyframes ambient-glow{0%{transform:translate3d(-3%,-2%,0) scale(.94);opacity:.45}100%{transform:translate3d(4%,3%,0) scale(1.08);opacity:1}}@keyframes card-border-glow{to{background-position:-100% 0}}
+    @media(prefers-reduced-motion:reduce){body,main,main::before,main::after,.card::after,.contact::after{animation:none;background-position:50% 50%}}
+    @media(prefers-reduced-motion:reduce){.hero-video{display:none}}
+    @media(prefers-reduced-motion:reduce){.action::before{animation:none}}
+    @media(max-width:960px){.hero{grid-template-columns:1fr;min-height:auto}.hero-image{min-height:340px;order:-1}.intro{padding:40px 24px 80px}.logo{width:210px;height:122px;object-position:center 52%;transform:none;margin-bottom:28px}main{padding:0 24px 60px;margin-top:-48px}.grid{grid-template-columns:1fr;gap:18px}.card{min-height:190px;padding:24px}.card>div{max-width:75%}.card h2{font-size:24px}.contact{padding:32px 26px;min-height:220px;margin-top:22px}.contact>div{max-width:70%}.contact h2{font-size:28px}footer{padding:40px 20px 30px}}
+    @media(max-width:520px){.hero-image{min-height:0;aspect-ratio:16/9;background-color:var(--bg)}.hero-video{object-fit:cover;background:var(--bg)}.hero-image::before{content:"";display:block;position:absolute;z-index:1;pointer-events:none;inset:auto 0 -1px;height:34%;background:linear-gradient(180deg,rgba(252,251,248,0) 0%,rgba(252,251,248,.45) 48%,var(--bg) 100%)}.intro{padding:28px 18px 70px}.logo{width:180px;height:105px;margin-bottom:22px}.intro h1{font-size:clamp(1.42rem,6.7vw,1.8rem);white-space:nowrap}.intro h1 em{white-space:nowrap}.card h2 .title-line,.contact h2 .title-line{display:block}main{padding-left:16px;padding-right:16px;margin-top:-38px}.card>div{max-width:100%}.card::before{background:linear-gradient(180deg,rgba(20,4,10,.55) 0%,rgba(20,4,10,.92) 55%)}.card{min-height:220px}.tiktok-mark,.youtube-mark{right:12px;top:14px;width:48px;opacity:.64;transform:none}.whatsapp-mark{display:none}.contact{padding:26px 22px;min-height:210px}.contact>div{max-width:100%}.contact::before{background:linear-gradient(180deg,rgba(245,242,236,.6),rgba(245,242,236,.95) 50%)}.action{width:min(100%,280px)}.options{grid-template-columns:1fr}}
+    @media(max-width:520px){
+      body,main{animation:none;background-position:50% 50%}
+      main::before,main::after{display:none}
+      .card::after,.contact::after{animation:card-border-glow 5.8s linear infinite}
+      .intro,.card,.contact{text-align:center}
+      .intro{align-items:center}.intro p{margin-left:auto;margin-right:auto}.logo{margin-left:auto;margin-right:auto}
+      .card{justify-content:center}.card>div,.contact>div{width:100%;margin-left:auto;margin-right:auto}
+      .action{justify-content:center}.contact{justify-content:center}.contact .action{margin-left:auto;margin-right:auto}
+      .grid{perspective:1100px;perspective-origin:50% 20%;gap:18px}
+      body.mobile-reveal-ready .scroll-reveal{opacity:0;transform:translate3d(0,68px,0) rotateX(6deg) scale(.94);transform-origin:50% 0;transition:opacity .48s ease-out,transform .64s cubic-bezier(.16,1,.3,1);will-change:transform,opacity;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+      body.mobile-reveal-ready .scroll-reveal::after{animation-play-state:paused}
+      body.mobile-reveal-ready .scroll-reveal.is-revealed{opacity:1;transform:translate3d(0,0,0) rotateX(0) scale(1)}
+      body.mobile-reveal-ready .scroll-reveal.is-revealed::after{animation-play-state:running}
+      body.mobile-reveal-ready .grid>.scroll-reveal{margin-top:-14px}
+      body.mobile-reveal-ready .grid>.scroll-reveal:first-child{margin-top:0}
+    }
+    @media(max-width:520px) and (prefers-reduced-motion:reduce){body.mobile-reveal-ready .scroll-reveal{opacity:1;filter:none;transform:none;transition:none}body.mobile-reveal-ready .scroll-reveal::after{animation:none}}
+    @media(min-width:521px){
+      body{animation:none;background-position:50% 50%}
+      .intro{transform:translate(20px,78px)}
+      .intro h1{font-size:clamp(1.95rem,2.15vw,2.35rem);letter-spacing:-.8px}
+      .intro p{font-size:16px;line-height:1.72;max-width:455px}
+      main{margin-top:0;padding-top:20px}
+      main>.contact:first-child{top:0;margin-top:0;margin-bottom:36px}
+      body.desktop-reveal-ready .desktop-scroll-reveal{opacity:0;translate:0 32px;scale:.97;transition:opacity .58s ease-out,translate .72s cubic-bezier(.16,1,.3,1),scale .72s cubic-bezier(.16,1,.3,1);will-change:opacity,translate,scale;backface-visibility:hidden}
+      body.desktop-reveal-ready .desktop-scroll-reveal.is-revealed-desktop{opacity:1;translate:0 0;scale:1}
+    }
+    @media(min-width:521px) and (prefers-reduced-motion:reduce){body.desktop-reveal-ready .desktop-scroll-reveal{opacity:1;translate:none;scale:none;transition:none}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="intro"><img class="logo" src="images/logo.png" alt="Lamartine Imóveis"><h1>Encontre o imóvel certo,<em>para o seu próximo momento</em></h1><p>Comprar, vender ou alugar exige mais do que uma boa oportunidade. Exige estratégia, segurança e conhecimento do mercado. Conheça as oportunidades selecionadas pela Lamartine Imóveis.</p></div>
+    <div class="hero-image" aria-hidden="true"><video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="images/hero.jpg" tabindex="-1"><source src="public/videos/hero-background.webm" type="video/webm"></video></div>
+  </header>
+  <main>
+    <section class="contact"><div><h2><span class="title-line">Contato &amp;</span><em class="title-line">WhatsApp</em></h2><p>Informe nome, telefone e se procura comprar ou alugar. Seu atendimento entrará automaticamente na fila da equipe.</p><button class="action" id="openForm" type="button">Quero atendimento</button></div><img class="whatsapp-mark" src="images/whatsapp-mark.png" alt="" aria-hidden="true"></section>
+    <section class="grid" aria-label="Links principais">
+      <a class="card" href="https://lamartineimoveis.com.br/" target="_blank" rel="noopener" style="background-image:url('images/card1.png')"><div><span class="tag">Portfólio</span><h2><span class="title-line">Conheça nossos</span><span class="title-line">imóveis</span></h2><p>Encontre imóveis selecionados para você.</p><span class="action">Ver imóveis</span></div></a>
+      <button class="card" id="evaluationButton" type="button" style="background-image:url('images/card2.jpg')"><div><span class="tag">Avaliação personalizada</span><h2><span class="title-line">Avalie seu</span><span class="title-line">imóvel</span></h2><p>Fale pelo WhatsApp com um de nossos especialistas.</p><span class="action">Solicitar avaliação</span></div></button>
+      <a class="card" href="https://www.tiktok.com/@lamartine.imoveis" target="_blank" rel="noopener" style="background-image:url('images/card3.jpg')"><div><span class="tag">Redes sociais</span><h2><span class="title-line">Conheça nosso</span><span class="title-line">TikTok</span></h2><p>Acompanhe nossos imóveis e conteúdos.</p><span class="action">Abrir TikTok</span></div><img class="tiktok-mark" src="images/tiktok-mark.png" alt="" aria-hidden="true"></a>
+      <div class="card soon" aria-disabled="true" style="background-image:url('images/card4.png')"><div><span class="tag">Em breve</span><h2><span class="title-line">Conheça nosso</span><span class="title-line">YouTube</span></h2><p>O endereço do canal será adicionado em breve.</p><span class="action">Em breve</span></div><img class="youtube-mark" src="images/youtube-mark.png" alt="" aria-hidden="true"></div>
+    </section>
+  </main>
+  <footer>© 2026 Lamartine Imóveis. Todos os direitos reservados.</footer>
+
+  <div class="modal" id="leadModal" hidden role="dialog" aria-modal="true" aria-labelledby="formTitle">
+    <form class="dialog" id="leadForm">
+      <button class="close" type="button" aria-label="Fechar">×</button>
+      <h2 id="formTitle">Fale com a Lamartine</h2>
+      <p>Preencha os dados abaixo. Um corretor receberá seu atendimento.</p>
+      <label class="field">Nome completo<input name="name" autocomplete="name" minlength="2" maxlength="120" required></label>
+      <label class="field">Telefone com DDD<input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(61) 99999-9999" required></label>
+      <fieldset class="field" style="border:0;padding:0"><legend>Qual é o seu interesse?</legend><div class="options"><label class="option"><input type="radio" name="interestType" value="Venda" required> Comprar imóvel</label><label class="option"><input type="radio" name="interestType" value="Aluguel" required> Alugar imóvel</label></div></fieldset>
+      <label class="honeypot">Não preencha<input name="website" tabindex="-1" autocomplete="off"></label>
+      <button class="submit" type="submit">Enviar solicitação</button>
+      <div class="message" id="formMessage" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+  <script>
+    const API_URL='https://jyelahgifsnypjyovshk.supabase.co/functions/v1/bio-lead-intake';
+    const phones=['556193672142','556193095756','556192992363','556133441005','556191774445'];
+    document.getElementById('evaluationButton').addEventListener('click',()=>{const key='lamartine-evaluation-index';const index=Number(localStorage.getItem(key)||0)%phones.length;localStorage.setItem(key,String(index+1));const text=encodeURIComponent('Olá! Vim pelo link da Lamartine e gostaria de avaliar meu imóvel.');location.href=`https://wa.me/${phones[index]}?text=${text}`});
+    const modal=document.getElementById('leadModal'),form=document.getElementById('leadForm'),message=document.getElementById('formMessage'),submit=form.querySelector('.submit');
+    const open=()=>{modal.hidden=false;document.body.style.overflow='hidden';setTimeout(()=>form.elements.name.focus(),0)};const close=()=>{modal.hidden=true;document.body.style.overflow=''};
+    document.getElementById('openForm').addEventListener('click',open);form.querySelector('.close').addEventListener('click',close);modal.addEventListener('click',e=>{if(e.target===modal)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)close()});
+    form.elements.phone.addEventListener('input',e=>{let d=e.target.value.replace(/\D/g,'').slice(0,11);e.target.value=d.length>10?d.replace(/(\d{2})(\d{5})(\d{0,4})/,'($1) $2-$3'):d.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3')});
+    form.addEventListener('submit',async e=>{e.preventDefault();message.className='message';message.textContent='';submit.disabled=true;submit.textContent='Enviando...';const data=Object.fromEntries(new FormData(form));try{const response=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const result=await response.json();if(!response.ok)throw new Error(result.error||'Não foi possível enviar.');message.className='message success';message.textContent='Solicitação enviada! Nossa equipe entrará em contato.';form.reset()}catch(error){message.className='message error';message.textContent=error.message||'Não foi possível enviar agora.'}finally{submit.disabled=false;submit.textContent='Enviar solicitação'}});
+  </script>
+  <script>
+    if(window.matchMedia('(hover: hover) and (pointer: fine)').matches){
+      document.querySelectorAll('.card,.contact').forEach(card=>{
+        card.addEventListener('pointerenter',()=>card.classList.add('is-hovered'));
+        card.addEventListener('pointerleave',()=>{
+          card.classList.remove('is-hovered');
+        });
+      });
+    }
+
+    const mobileReveal=window.matchMedia('(max-width: 520px)');
+    if(mobileReveal.matches){
+      const revealCards=[document.querySelector('main > .contact'),...document.querySelectorAll('.grid > .card')].filter(Boolean);
+      document.body.classList.add('mobile-reveal-ready');
+      revealCards.forEach(card=>card.classList.add('scroll-reveal'));
+      const revealObserver=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-revealed');
+          }else{
+            entry.target.classList.remove('is-revealed');
+          }
+        });
+      },{threshold:.05,rootMargin:'12px 0px -4% 0px'});
+      revealCards.forEach(card=>revealObserver.observe(card));
+    }
+    if(!mobileReveal.matches){
+      const desktopCards=[document.querySelector('main > .contact'),...document.querySelectorAll('.grid > .card')].filter(Boolean);
+      document.body.classList.add('desktop-reveal-ready');
+      desktopCards.forEach(card=>card.classList.add('desktop-scroll-reveal'));
+      const desktopObserver=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-revealed-desktop');
+            window.setTimeout(()=>{
+              entry.target.style.removeProperty('transition-delay');
+              entry.target.style.willChange='auto';
+            },1000);
+            desktopObserver.unobserve(entry.target);
+          }
+        });
+      },{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+      desktopCards.forEach((card,index)=>{
+        card.style.transitionDelay=`${(index%2)*90}ms`;
+        desktopObserver.observe(card);
+      });
+    }
+  </script>
+</body>
+</html>
